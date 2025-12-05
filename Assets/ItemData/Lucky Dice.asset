@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Lucky Dice
   cost: 77
+  icon: {fileID: 21300000, guid: b9cbb487b3e0f6a419d122afb8b45233, type: 3}
   description: Allows rerolling the shop once.

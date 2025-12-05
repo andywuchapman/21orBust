@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Rabbit's Foot
   cost: 25
+  icon: {fileID: 21300000, guid: 74e13320070e28e468a8e1e832c738ee, type: 3}
   description: Increases your luck.

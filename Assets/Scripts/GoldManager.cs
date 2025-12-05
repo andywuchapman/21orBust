@@ -22,7 +22,7 @@ public class GoldManager : MonoBehaviour
         return false;
     }
 
-    void UpdateUI()
+    public void UpdateUI()
     {
         goldText.text = "Gold: " + currentGold.ToString();
     }

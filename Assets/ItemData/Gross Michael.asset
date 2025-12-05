@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Gross Michael
   cost: 15
+  icon: {fileID: 21300000, guid: 1d49c3bce1b1942409516c4b1ca56d1c, type: 3}
   description: Yellow banana that does something. Text takes up a lot of space to
     see how the UI reacts.

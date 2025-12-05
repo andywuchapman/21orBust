@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Poker Chip
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Poker Chip
-  cost: 0
+  cost: 10
+  icon: {fileID: 21300000, guid: 7c08b7c0b4022134cb173ad207964511, type: 3}
   description: Does something.

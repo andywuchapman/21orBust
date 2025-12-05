@@ -11,7 +11,7 @@ public class ShopManager : MonoBehaviour
         GenerateShopItems();
     }
 
-    void GenerateShopItems()
+    public void GenerateShopItems()
     {
         for (int i = 0; i < itemSlots.Length; i++)
         {

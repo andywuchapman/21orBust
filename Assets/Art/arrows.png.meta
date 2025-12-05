@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 7c08b7c0b4022134cb173ad207964511
+guid: 12c74728fe6f61843884a51829bb58ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3603556060819865620
-    second: ball_0
+      213: -2429919002490121231
+    second: arrows_0
+  - first:
+      213: 67926103340967526
+    second: arrows_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ball_0
+      name: arrows_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 30
-        height: 29
+        y: 47
+        width: 434
+        height: 243
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +131,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cef30aaead89dfdc0800000000000000
-      internalID: -3603556060819865620
+      spriteID: 1f3da9f9a81374ed0800000000000000
+      internalID: -2429919002490121231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: arrows_1
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 206
+        width: 442
+        height: 259
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6666d9c5e6251f000800000000000000
+      internalID: 67926103340967526
       vertices: []
       indices: 
       edges: []
@@ -148,7 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      ball_0: -3603556060819865620
+      arrows_0: -2429919002490121231
+      arrows_1: 67926103340967526
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

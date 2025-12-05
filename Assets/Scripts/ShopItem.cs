@@ -6,6 +6,7 @@ public class ShopItem : MonoBehaviour
     public Text nameText;
     public Text costText;
     public Text descriptionText;
+    public Image iconImage;
 
     private GameObject shopItem;
     private ItemData itemData;
@@ -19,6 +20,7 @@ public class ShopItem : MonoBehaviour
         nameText.text = itemData.itemName;
         costText.text = "Cost: " + itemData.cost;
         descriptionText.text = itemData.description;
+        iconImage.sprite = itemData.icon;
     }
 
     public void Buy()
