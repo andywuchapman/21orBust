@@ -60,6 +60,14 @@ public class Deck : MonoBehaviour
         return card.GetValueOfCard();
     }
 
+    public int RandomizeCard(Card card)
+    {
+        int index = Random.Range(0, cardSprites.Length);
+        card.SetSprite(cardSprites[index]);
+        card.SetValue(cardValues[index]);
+        return card.GetValueOfCard();
+    }
+
      public Sprite GetCardBack()
      {
          return cardSprites[0];

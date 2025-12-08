@@ -5,13 +5,12 @@ public class RandomizerPowerup : Powerup
 
     public override bool DoPowerup()
     {
+        Randomizer();
         return true;
     }
     
     public void Randomizer()
     {
-        //FindRecentCard()
-        //randomize the value
-        //set sprite equal to value drawn
+        powerups.Player.RandomizeLastCardInHand();
     }
 }
