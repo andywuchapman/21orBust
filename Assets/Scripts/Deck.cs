@@ -48,11 +48,15 @@ public class Deck : MonoBehaviour
         currentIndex = 1;
     }
 
-    public int DealCard(Card card)
+    public int DealCard(Card card, bool isLastCard = false)
     {
-        card.SetSprite(cardSprites[currentIndex]);
-        card.SetValue(cardValues[currentIndex]);
-        currentIndex++;
+        int index = currentIndex;
+        if (isLastCard)
+            index--;
+        card.SetSprite(cardSprites[index]);
+        card.SetValue(cardValues[index]);
+        if (!isLastCard)
+            currentIndex++;
         return card.GetValueOfCard();
     }
 
@@ -60,4 +64,10 @@ public class Deck : MonoBehaviour
      {
          return cardSprites[0];
      }
+
+     public Sprite GetTopCardSprite()
+     {
+         return cardSprites[currentIndex];
+     }
+     
 }

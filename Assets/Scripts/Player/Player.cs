@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
         GetCard();
     }
 
-    public int GetCard()
+    public int GetCard(bool isDuplicate = false)
     {
-        int cardValue = deck.DealCard(hand[cardIndex].GetComponent<Card>());
+        int cardValue = deck.DealCard(hand[cardIndex].GetComponent<Card>(), isDuplicate);
         hand[cardIndex].GetComponent<Renderer>().enabled = true;
         handValue += cardValue;
 
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
         AceCheck();
         cardIndex++;
+        
         return handValue;
     }
     
