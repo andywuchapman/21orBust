@@ -9,13 +9,14 @@ public class Powerups : MonoBehaviour
     public Deck Deck;
     public SpriteRenderer PeerSpriteRenderer;
     public DoublePowerup DoublePowerup;
+    public SkipPowerup SkipPowerup;
     
     private List<Powerup> powerups;
 
     public void Awake()
     {
         powerups = new List<Powerup>();
-        AddPowerup(DoublePowerup);
+        AddPowerup(SkipPowerup);
     }
     
     public void AddPowerup(Powerup powerup)

@@ -82,4 +82,10 @@ public class Player : MonoBehaviour
         aceList = new List<Card>();
 
     }
+
+    public void ReplaceLastCardInHand()
+    {
+        cardIndex--;
+        GetCard();
+    }
 }

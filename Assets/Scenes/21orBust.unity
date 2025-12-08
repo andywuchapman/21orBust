@@ -2776,7 +2776,8 @@ MonoBehaviour:
   Player: {fileID: 1568457901}
   Deck: {fileID: 214206050}
   PeerSpriteRenderer: {fileID: 208362435}
-  DoublePowerup: {fileID: 1354746051}
+  DoublePowerup: {fileID: 0}
+  SkipPowerup: {fileID: 1354746051}
 --- !u!4 &1267135080
 Transform:
   m_ObjectHideFlags: 0
@@ -3344,7 +3345,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1354746051}
-        m_TargetAssemblyTypeName: DoublePowerup, Assembly-CSharp
+        m_TargetAssemblyTypeName: SkipPowerup, Assembly-CSharp
         m_MethodName: OnPowerupClicked
         m_Mode: 1
         m_Arguments:
@@ -3402,9 +3403,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1354746045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b283f0b3dbfac455dbc55f86cd863374, type: 3}
+  m_Script: {fileID: 11500000, guid: fc387119e1e3e4803b8eed5a651ab022, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoublePowerup
+  m_EditorClassIdentifier: Assembly-CSharp::SkipPowerup
 --- !u!1 &1378178869
 GameObject:
   m_ObjectHideFlags: 0
