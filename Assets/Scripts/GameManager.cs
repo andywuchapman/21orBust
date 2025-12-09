@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Button hitBtn;
     public Button standBtn;
     public Button betBtn;
+    public Button endBtn;
 
     private int standClicks = 0;
 
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         hideCard.GetComponent<Renderer>().enabled = true;
         
         dealBtn.gameObject.SetActive(false);
+        endBtn.gameObject.SetActive(false);
         hitBtn.gameObject.SetActive(true);
         standBtn.gameObject.SetActive(true);
         standBtnText.text = "Stand";
@@ -72,14 +74,19 @@ public class GameManager : MonoBehaviour
         {
             player.GetCard();
             scoreText.text = "Hand: " + player.handValue;
-            //turn off hit
+            hitBtn.gameObject.SetActive(false);
+            endBtn.gameObject.SetActive(true);
         }
     }
 
     public void OnEndTurn()
     {
         if (player.handValue > 20) RoundOver();
-        //turn on hit
+        {
+            hitBtn.gameObject.SetActive(true);
+            endBtn.gameObject.SetActive(false);
+            
+        }
     }
     
     public void StandClicked()
