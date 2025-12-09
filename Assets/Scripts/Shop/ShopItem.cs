@@ -7,6 +7,7 @@ public class ShopItem : MonoBehaviour
     public Text costText;
     public Text descriptionText;
     public Image iconImage;
+    public Powerups Powerups;
 
     private GameObject shopItem;
     private ItemData itemData;
@@ -33,5 +34,8 @@ public class ShopItem : MonoBehaviour
         {
             Debug.Log("Not enough gold!");
         }
+        
+        // call Powerups.AddPowerup() and pass in the PowerupsType to add
+        // ex: if bought a SkipPowerup:  Powerups.AddPowerup(PowerupsType.Skip);
     }
 }

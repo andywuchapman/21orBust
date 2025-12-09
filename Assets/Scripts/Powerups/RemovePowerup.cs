@@ -4,12 +4,13 @@ public class RemovePowerup : Powerup
     
     public override bool DoPowerup()
     {
+        print("Removing powerup");
+        Remove();
         return true;
     }
     
     public void Remove()
     {
-        //find player's deck
-        //if card is clicked, remove it
+        powerups.Player.RemoveLastCard();
     }
 }

@@ -90,6 +90,13 @@ public class Player : MonoBehaviour
         GetCard();
     }
 
+    public void RemoveLastCard()
+    {
+        cardIndex--;
+        RemoveLastCardValueFromHandValue();
+        hand[cardIndex].GetComponent<Renderer>().enabled = false;
+    }
+
     private void RemoveLastCardValueFromHandValue()
     {
         Card lastCard = hand[cardIndex].GetComponent<Card>();

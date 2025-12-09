@@ -72,8 +72,14 @@ public class GameManager : MonoBehaviour
         {
             player.GetCard();
             scoreText.text = "Hand: " + player.handValue;
-            if (player.handValue > 20) RoundOver();
+            //turn off hit
         }
+    }
+
+    public void OnEndTurn()
+    {
+        if (player.handValue > 20) RoundOver();
+        //turn on hit
     }
     
     public void StandClicked()
