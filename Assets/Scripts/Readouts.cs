@@ -17,22 +17,22 @@ public class Readouts : MonoBehaviour
         }
     }
 
-    public void ShowTableInfo(string tableName, int bank, int winnings, int promotionTarget)
+    public void ShowTableInfo(string tableName, int playerBank, int winnings, int promotionTarget)
     {
         if (tableNameText != null)
         {
             tableNameText.text = "Table: " + tableName;
         }
 
-        UpdateBank(bank);
+        UpdateBank(playerBank);
         UpdateWinnings(winnings, promotionTarget);
     }
 
-    public void UpdateBank(int bank)
+    public void UpdateBank(int playerBank)
     {
         if (bankText != null)
         {
-            bankText.text = "Bank: " + bank;
+            bankText.text = "Bank: " + playerBank;
         }
     }
 
