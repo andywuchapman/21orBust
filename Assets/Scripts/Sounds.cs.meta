@@ -1,2 +1,14 @@
 fileFormatVersion: 2
 guid: 1cd0def5f19694201a5a3f1f5255eb00
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - GameStartSound: {fileID: 8300000, guid: b795e199f84a089418a80b5304ac9f48, type: 3}
+  - GameLoseSound: {fileID: 8300000, guid: 17969f147904d4bafb21eb367ee26ad5, type: 3}
+  - LoseCardSound: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
