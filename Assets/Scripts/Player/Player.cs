@@ -21,9 +21,9 @@ public class Player : MonoBehaviour
         GetCard();
     }
 
-    public int GetCard()
+    public int GetCard(bool isDuplicate = false)
     {
-        int cardValue = deck.DealCard(hand[cardIndex].GetComponent<Card>());
+        int cardValue = deck.DealCard(hand[cardIndex].GetComponent<Card>(), isDuplicate);
         hand[cardIndex].GetComponent<Renderer>().enabled = true;
         handValue += cardValue;
 
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
 
         AceCheck();
         cardIndex++;
+        
         return handValue;
     }
     
@@ -80,5 +81,43 @@ public class Player : MonoBehaviour
         handValue = 0;
         aceList = new List<Card>();
 
+    }
+
+    public void ReplaceLastCardInHand()
+    {
+        cardIndex--;
+        RemoveLastCardValueFromHandValue();
+        GetCard();
+    }
+
+    public void RemoveLastCard()
+    {
+        cardIndex--;
+        RemoveLastCardValueFromHandValue();
+        hand[cardIndex].GetComponent<Renderer>().enabled = false;
+    }
+
+    private void RemoveLastCardValueFromHandValue()
+    {
+        Card lastCard = hand[cardIndex].GetComponent<Card>();
+        handValue = handValue - lastCard.GetValueOfCard();
+    }
+
+    public void RandomizeLastCardInHand()
+    {
+        cardIndex--;
+        RemoveLastCardValueFromHandValue();
+        
+        int cardValue = deck.RandomizeCard(hand[cardIndex].GetComponent<Card>());
+        hand[cardIndex].GetComponent<Renderer>().enabled = true;
+        handValue += cardValue;
+
+        if (cardValue == 1)
+        {
+            aceList.Add(hand[cardIndex].GetComponent<Card>());
+        }
+
+        AceCheck();
+        cardIndex++;
     }
 }

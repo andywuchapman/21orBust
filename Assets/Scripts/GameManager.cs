@@ -1,12 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum LastButtonPressedType
+{
+    Hit,
+    Deal,
+    Stand,
+    Bet,
+}
 public class GameManager : MonoBehaviour
 {
     public Button dealBtn;
     public Button hitBtn;
     public Button standBtn;
     public Button betBtn;
+    public Button endBtn;
 
     private int standClicks = 0;
 
@@ -22,11 +30,15 @@ public class GameManager : MonoBehaviour
 
     public GameObject hideCard;
 
+    public LastButtonPressedType LastButtonPressed;
+    
     private int pot = 0;
     
     
     public void DealClicked()
     {
+        LastButtonPressed = LastButtonPressedType.Deal;
+        
         player.ResetHand();
         dealer.ResetHand();
         
@@ -43,6 +55,7 @@ public class GameManager : MonoBehaviour
         hideCard.GetComponent<Renderer>().enabled = true;
         
         dealBtn.gameObject.SetActive(false);
+        endBtn.gameObject.SetActive(false);
         hitBtn.gameObject.SetActive(true);
         standBtn.gameObject.SetActive(true);
         standBtnText.text = "Stand";
@@ -55,16 +68,31 @@ public class GameManager : MonoBehaviour
     
     public void HitClicked()
     {
+        LastButtonPressed = LastButtonPressedType.Hit;
+        
         if (player.cardIndex <= 10)
         {
             player.GetCard();
             scoreText.text = "Hand: " + player.handValue;
-            if (player.handValue > 20) RoundOver();
+            hitBtn.gameObject.SetActive(false);
+            endBtn.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnEndTurn()
+    {
+        if (player.handValue > 20) RoundOver();
+        {
+            hitBtn.gameObject.SetActive(true);
+            endBtn.gameObject.SetActive(false);
+            
         }
     }
     
     public void StandClicked()
     {
+        LastButtonPressed = LastButtonPressedType.Stand;
+        
         standClicks++;
         if (standClicks > 1) RoundOver();
         HitDealer();
@@ -81,7 +109,7 @@ public class GameManager : MonoBehaviour
         }
     }
     
-    void RoundOver()
+    public void RoundOver()
     {
         bool playerBust = player.handValue > 21;
         bool dealerBust = dealer.handValue > 21;
