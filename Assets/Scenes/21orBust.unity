@@ -622,7 +622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &177362636
 RectTransform:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ MonoBehaviour:
   hitBtn: {fileID: 1732594398}
   standBtn: {fileID: 52346227}
   betBtn: {fileID: 1937533155}
-  endBtn: {fileID: 1716631650}
+  endBtn: {fileID: 0}
   player: {fileID: 1568457901}
   dealer: {fileID: 908934498}
   standBtnText: {fileID: 1092224772}
@@ -760,7 +760,7 @@ MonoBehaviour:
   mainText: {fileID: 1495200877}
   hideCard: {fileID: 72864683}
   LastButtonPressed: 0
-  blackjackLevels: {fileID: 1331324721}
+  blackjackLevels: {fileID: 0}
 --- !u!4 &193083580
 Transform:
   m_ObjectHideFlags: 0
@@ -3676,12 +3676,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1acd9bd5c2e4f8191d8b2e2399f88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackjackLevels
-  player: {fileID: 1568457901}
-  lowStakesTable: {fileID: 1742549920}
-  mediumStakesTable: {fileID: 1081134634}
-  highStakesTable: {fileID: 2088940067}
-  profitToLevelUp: 10
-  lossToLevelDown: 100
+  player: {fileID: 0}
+  lowStakesTable: {fileID: 0}
+  mediumStakesTable: {fileID: 0}
+  highStakesTable: {fileID: 0}
+  profitToLevelUp: 20
+  lossToLevelDown: 300
   currentLevel: 0
 --- !u!4 &1331324722
 Transform:
@@ -3716,7 +3716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1332533822
 MonoBehaviour:
   m_ObjectHideFlags: 0
