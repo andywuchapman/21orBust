@@ -6,9 +6,10 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Shop/Item")]
 public class ItemData : ScriptableObject
 {
-    public string itemName;
+    public string name;
     public int cost;
     public Sprite icon;
+    public PowerupType type;
     [TextArea]
     public string description;
 }
