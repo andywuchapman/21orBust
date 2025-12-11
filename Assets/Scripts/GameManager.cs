@@ -34,8 +34,7 @@ public class GameManager : MonoBehaviour
     public LastButtonPressedType LastButtonPressed;
 
     private int pot = 0;
-
-    // NEW: reference to level manager
+    
     public BlackjackLevels blackjackLevels;
 
     private void Start()
@@ -146,7 +145,6 @@ public class GameManager : MonoBehaviour
         else if (playerBust || (!dealerBust && dealer.handValue > player.handValue))
         {
             mainText.text = "Dealer wins!";
-            // player already lost their bet – no extra money change here
         }
         else if (dealerBust || player.handValue > dealer.handValue)
         {

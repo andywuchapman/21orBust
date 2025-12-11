@@ -60,12 +60,11 @@ public class BlackjackLevels : MonoBehaviour
         Debug.Log($"BlackjackLevels: OnRoundEnd → currentMoney={currentMoney}, start={moneyAtLevelStart}, profit={profit}, level={currentLevel}");
 
         bool changed = false;
-
-        // Move UP if overall profit at this table is high enough
+        
         if (profit >= profitToLevelUp && currentLevel < 2)
         {
             currentLevel++;
-            moneyAtLevelStart = currentMoney;  // new baseline at new table
+            moneyAtLevelStart = currentMoney; 
             changed = true;
             Debug.Log($"BlackjackLevels: moved UP to level {currentLevel}");
         }
@@ -73,7 +72,7 @@ public class BlackjackLevels : MonoBehaviour
         else if (profit <= -lossToLevelDown && currentLevel > 0)
         {
             currentLevel--;
-            moneyAtLevelStart = currentMoney;  // new baseline at new table
+            moneyAtLevelStart = currentMoney;  
             changed = true;
             Debug.Log($"BlackjackLevels: moved DOWN to level {currentLevel}");
         }

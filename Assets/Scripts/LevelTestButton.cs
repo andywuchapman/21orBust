@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class LevelTestButton : MonoBehaviour
 {
-    public Player player;                // drag Player here (or leave null to auto-find)
-    public BlackjackLevels blackjackLevels; // drag BackgroundManager here (or auto-find)
+    public Player player;               
+    public BlackjackLevels blackjackLevels; 
 
     [Header("Test Settings")]
-    public int moneyDelta = 20;          // positive = win, negative = loss
+    public int moneyDelta = 20;         
 
     public void OnClick()
     {
