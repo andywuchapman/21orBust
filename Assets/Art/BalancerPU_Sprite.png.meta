@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8cac0cabb43db4f0a8ae0db7576a34bb
+guid: 138c2a91911f34e28a369590e2e13770
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7936254339132656736
-    second: LuxuryBlueTable_0
+      213: -5278852970748861682
+    second: BalancerPU_Sprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LuxuryBlueTable_0
+      name: BalancerPU_Sprite_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 500
-        height: 272
+        x: 17
+        y: 3
+        width: 66
+        height: 94
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06c872bf54d332e60800000000000000
-      internalID: 7936254339132656736
+      spriteID: e03aff0113fbdb6b0800000000000000
+      internalID: -5278852970748861682
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LuxuryBlueTable_0: 7936254339132656736
+      BalancerPU_Sprite_0: -5278852970748861682
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

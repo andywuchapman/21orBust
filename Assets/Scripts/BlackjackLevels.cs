@@ -10,11 +10,12 @@ public class BlackjackLevels : MonoBehaviour
 
     public List<GameObject> tableVisuals;
 
-    public int playerBank = 300;
+    
 
     private int currentLevel = 0;
     private int winningsAtCurrentTable = 0;
-
+    
+    public Player player;
     void Start()
     {
         currentLevel = 0;
