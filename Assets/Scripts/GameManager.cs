@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Button endBtn;
 
     private int standClicks = 0;
+    private int roundsPlayed = 0;
 
     public Player player;
     public Player dealer;
@@ -30,6 +31,10 @@ public class GameManager : MonoBehaviour
     public Text mainText;
 
     public GameObject hideCard;
+    public GameObject blackjackCanvas;
+    public GameObject shopCanvas;
+    
+    public ShopManager shopManager;
 
     public LastButtonPressedType LastButtonPressed;
 
@@ -163,7 +168,8 @@ public class GameManager : MonoBehaviour
 
         if (roundOver)
         {
-     
+            roundsPlayed++; // increment rounds counter
+
             if (blackjackLevels != null)
             {
                 blackjackLevels.OnRoundEnd();
@@ -177,9 +183,23 @@ public class GameManager : MonoBehaviour
             hideCard.GetComponent<Renderer>().enabled = false;
             UpdateCash();
             standClicks = 0;
+
+            // switch to shop after every x rounds
+            if (roundsPlayed >= 3)
+            {
+                roundsPlayed = 0; // reset counter
+                swapToShop();
+            }
         }
     }
 
+    public void swapToShop()
+    {
+        blackjackCanvas.SetActive(false);
+        shopCanvas.SetActive(true);
+        shopManager.GenerateShopItems(); // refresh shop
+    }
+    
     public void BetClicked()
     {
         LastButtonPressed = LastButtonPressedType.Bet;
