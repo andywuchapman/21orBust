@@ -752,7 +752,6 @@ MonoBehaviour:
   endBtn: {fileID: 1716631650}
   player: {fileID: 1568457901}
   dealer: {fileID: 908934498}
-  blackjackLevels: {fileID: 1331324721}
   standBtnText: {fileID: 1092224772}
   scoreText: {fileID: 1378178872}
   dealerScoreText: {fileID: 657772771}
@@ -761,6 +760,7 @@ MonoBehaviour:
   mainText: {fileID: 1495200877}
   hideCard: {fileID: 72864683}
   LastButtonPressed: 0
+  blackjackLevels: {fileID: 1331324721}
 --- !u!4 &193083580
 Transform:
   m_ObjectHideFlags: 0
@@ -1924,7 +1924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &630584205
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1957,6 +1957,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ceb9883bd4b4f49bea55ed64cc4f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTestButton
+  player: {fileID: 0}
+  blackjackLevels: {fileID: 0}
   moneyDelta: -200
 --- !u!114 &630584207
 MonoBehaviour:
@@ -2559,7 +2561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &846558607
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2592,6 +2594,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ceb9883bd4b4f49bea55ed64cc4f1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelTestButton
+  player: {fileID: 0}
+  blackjackLevels: {fileID: 0}
   moneyDelta: 100
 --- !u!114 &846558609
 MonoBehaviour:
@@ -3672,7 +3676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d1acd9bd5c2e4f8191d8b2e2399f88b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlackjackLevels
-  player: {fileID: 0}
+  player: {fileID: 1568457901}
   lowStakesTable: {fileID: 1742549920}
   mediumStakesTable: {fileID: 1081134634}
   highStakesTable: {fileID: 2088940067}

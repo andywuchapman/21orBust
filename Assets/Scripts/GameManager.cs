@@ -22,9 +22,6 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Player dealer;
 
-    // NEW: reference to BlackjackLevels
-    public BlackjackLevels blackjackLevels;
-
     public Text standBtnText;
     public Text scoreText;
     public Text dealerScoreText;
@@ -38,9 +35,11 @@ public class GameManager : MonoBehaviour
 
     private int pot = 0;
 
+    // NEW: reference to level manager
+    public BlackjackLevels blackjackLevels;
+
     private void Start()
     {
-        // Auto-find BlackjackLevels if not set in Inspector
         if (blackjackLevels == null)
         {
             blackjackLevels = FindObjectOfType<BlackjackLevels>();
@@ -76,16 +75,15 @@ public class GameManager : MonoBehaviour
         pot = 40;
         betsText.text = "Bets: $" + pot;
 
-        // OLD:
-        // player.AdjustMoney(-20);
+        // Initial bet for this round
+        player.AdjustMoney(-20);
+        cashText.text = "$" + player.GetMoney();
 
-        // NEW: use BlackjackLevels so tables track profit/loss
+       
         if (blackjackLevels != null)
         {
-            blackjackLevels.ApplyHandResult(-20);
+            blackjackLevels.ResetBaselineToCurrentMoney();
         }
-
-        cashText.text = "$" + player.GetMoney();
     }
 
     public void HitClicked()
@@ -107,7 +105,6 @@ public class GameManager : MonoBehaviour
         {
             hitBtn.gameObject.SetActive(true);
             endBtn.gameObject.SetActive(false);
-
         }
     }
 
@@ -144,46 +141,22 @@ public class GameManager : MonoBehaviour
         if (playerBust && dealerBust)
         {
             mainText.text = "All Bust: Bets returned";
-
-            // OLD:
-            // player.AdjustMoney(pot / 2);
-
-            // NEW:
-            if (blackjackLevels != null)
-            {
-                blackjackLevels.ApplyHandResult(pot / 2);
-            }
+            player.AdjustMoney(pot / 2);  
         }
         else if (playerBust || (!dealerBust && dealer.handValue > player.handValue))
         {
             mainText.text = "Dealer wins!";
-            // Player already paid the bet(s), no extra money change here.
+            // player already lost their bet – no extra money change here
         }
         else if (dealerBust || player.handValue > dealer.handValue)
         {
             mainText.text = "You win!";
-
-            // OLD:
-            // player.AdjustMoney(pot);
-
-            // NEW:
-            if (blackjackLevels != null)
-            {
-                blackjackLevels.ApplyHandResult(pot);
-            }
+            player.AdjustMoney(pot);      
         }
         else if (player.handValue == dealer.handValue)
         {
             mainText.text = "Push: Bets returned";
-
-            // OLD:
-            // player.AdjustMoney(pot / 2);
-
-            // NEW:
-            if (blackjackLevels != null)
-            {
-                blackjackLevels.ApplyHandResult(pot / 2);
-            }
+            player.AdjustMoney(pot / 2);  
         }
         else
         {
@@ -192,6 +165,12 @@ public class GameManager : MonoBehaviour
 
         if (roundOver)
         {
+     
+            if (blackjackLevels != null)
+            {
+                blackjackLevels.OnRoundEnd();
+            }
+
             hitBtn.gameObject.SetActive(false);
             standBtn.gameObject.SetActive(false);
             dealBtn.gameObject.SetActive(true);
@@ -205,21 +184,21 @@ public class GameManager : MonoBehaviour
 
     public void BetClicked()
     {
+        LastButtonPressed = LastButtonPressedType.Bet;
+
         Text newBet = betBtn.GetComponentInChildren(typeof(Text)) as Text;
         int intBet = int.Parse(newBet.text.Remove(0, 1));
 
-        // OLD:
-        // player.AdjustMoney(-intBet);
-
-        // NEW:
-        if (blackjackLevels != null)
-        {
-            blackjackLevels.ApplyHandResult(-intBet);
-        }
-
+        player.AdjustMoney(-intBet);
         cashText.text = "$" + player.GetMoney();
         pot += (intBet * 2);
         betsText.text = "Bets: $" + pot;
+        
+        if (blackjackLevels != null)
+        {
+            blackjackLevels.ResetBaselineToCurrentMoney();
+        }
     }
 }
+
 
