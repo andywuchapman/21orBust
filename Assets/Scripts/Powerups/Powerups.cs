@@ -66,13 +66,6 @@ public class Powerups : MonoBehaviour
                 powerups.Add(peerPowerupScript);
                 peerPowerupScript.RegisterPowerups(this);
                 break;
-            case PowerupType.Balance:
-                GameObject balancePowerup = Instantiate(BalancePowerupPrefab);
-                balancePowerup.transform.SetParent(PowerupsPanel.transform);
-                BalancePowerup balancePowerupScript = balancePowerup.GetComponent<BalancePowerup>();
-                powerups.Add(balancePowerupScript);
-                balancePowerupScript.RegisterPowerups(this);
-                break;
             case PowerupType.Randomizer:
                 GameObject randomizerPowerup = Instantiate(RandomizerPowerupPrefab);
                 randomizerPowerup.transform.SetParent(PowerupsPanel.transform);
