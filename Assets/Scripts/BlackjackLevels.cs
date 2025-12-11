@@ -1,121 +1,93 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BlackjackLevels : MonoBehaviour
 {
-    public Readouts readouts;
-    public Image tableBackgroundImage;
-    public List<BlackJackTableContents> tables;
+    [Header("References")]
+    public Player player;                
 
-    public List<GameObject> tableVisuals;
+    [Header("Table Objects (backgrounds)")]
+    public GameObject lowStakesTable;    
+    public GameObject mediumStakesTable; 
+    public GameObject highStakesTable;   
 
+    [Header("Level Rules")]
+    public int profitToLevelUp = 20;    
+    public int lossToLevelDown = 300;    
+
+    // 0 = low, 1 = medium, 2 = high
+    [SerializeField] private int currentLevel = 0;
+
+    private int moneyAtLevelStart;
+
+    private void Start()
+    {
+        if (player == null)
+            player = FindObjectOfType<Player>();
+
+        moneyAtLevelStart = player.GetMoney();
+        Debug.Log($"BlackjackLevels: Start. moneyAtLevelStart = {moneyAtLevelStart}");
+
+        UpdateTableVisuals();
+    }
     
-
-    private int currentLevel = 0;
-    private int winningsAtCurrentTable = 0;
-    
-    public Player player;
-    void Start()
+    public void ApplyHandResult(int moneyDelta)
     {
-        currentLevel = 0;
-        ApplyCurrentTable();
-    }
-
-    public void OnHandFinished(int netChangeInChips)
-    {
-        playerBank += netChangeInChips;
-        winningsAtCurrentTable += netChangeInChips;
-
-        UpdateReadouts();
-        AdjustTable();
-    }
-
-    public bool CanPlaceBet(int betAmount)
-    {
-        BlackJackTableContents t = tables[currentLevel];
-
-        if (betAmount < t.minBet || betAmount > t.maxBet)
-            return false;
-
-        if (playerBank < betAmount)
-            return false;
-
-        return true;
-    }
-
-    private void ApplyCurrentTable()
-    {
-        if (tables == null || tables.Count == 0)
-            return;
-
-        if (currentLevel < 0 || currentLevel >= tables.Count)
-            currentLevel = 0;
-
-        BlackJackTableContents t = tables[currentLevel];
-
-        winningsAtCurrentTable = 0;
-
-        if (tableBackgroundImage != null && t.tableBackground != null)
-            tableBackgroundImage.sprite = t.tableBackground;
-
-        if (tableVisuals != null && tableVisuals.Count > 0)
+        if (player == null)
         {
-            for (int i = 0; i < tableVisuals.Count; i++)
-            {
-                if (tableVisuals[i] != null)
-                    tableVisuals[i].SetActive(i == currentLevel);
-            }
+            Debug.LogWarning("BlackjackLevels: No Player set.");
+            return;
         }
+        
+        player.AdjustMoney(moneyDelta);
+        int currentMoney = player.GetMoney();
+        int profit = currentMoney - moneyAtLevelStart;
 
-        UpdateReadouts();
-        Debug.Log("Now at table: " + t.tableName);
-    }
+        Debug.Log($"BlackjackLevels: Hand result {moneyDelta}. CurrentMoney={currentMoney}, profit at this table={profit}, level={currentLevel}");
+        
+        bool changed = false;
 
-    private void UpdateReadouts()
-    {
-        if (readouts == null)
-            return;
-
-        BlackJackTableContents t = tables[currentLevel];
-
-        readouts.ShowLevel(currentLevel + 1);
-        readouts.ShowTableInfo(
-            t.tableName,
-            playerBank,
-            winningsAtCurrentTable,
-            t.earningsNeededToMoveUp
-        );
-    }
-
-    private void AdjustTable()
-    {
-        if (tables == null || tables.Count == 0)
-            return;
-
-        BlackJackTableContents current = tables[currentLevel];
-
-        if (currentLevel < tables.Count - 1)
+      
+        if (profit >= profitToLevelUp && currentLevel < 2)
         {
-            BlackJackTableContents next = tables[currentLevel + 1];
-            bool reachedTarget = winningsAtCurrentTable >= current.earningsNeededToMoveUp;
-            bool canAffordNext = playerBank >= next.minBet;
-
-            if (reachedTarget && canAffordNext)
-            {
-                currentLevel++;
-                ApplyCurrentTable();
-                current = tables[currentLevel];
-            }
+            currentLevel++;
+            moneyAtLevelStart = currentMoney;   // reset baseline for the new table
+            changed = true;
+            Debug.Log($"BlackjackLevels: moved UP to level {currentLevel}");
         }
-
-        while (currentLevel > 0 && playerBank < tables[currentLevel].minBet)
+        else if (profit <= -lossToLevelDown && currentLevel > 0)
         {
             currentLevel--;
-            ApplyCurrentTable();
+            moneyAtLevelStart = currentMoney;   // reset baseline for the new table
+            changed = true;
+            Debug.Log($"BlackjackLevels: moved DOWN to level {currentLevel}");
+        }
+
+        if (changed)
+        {
+            UpdateTableVisuals();
+        }
+        else
+        {
+            Debug.Log("BlackjackLevels: stayed at current table.");
         }
     }
+
+    private void UpdateTableVisuals()
+    {
+        if (lowStakesTable != null)    lowStakesTable.SetActive(currentLevel == 0);
+        if (mediumStakesTable != null) mediumStakesTable.SetActive(currentLevel == 1);
+        if (highStakesTable != null)   highStakesTable.SetActive(currentLevel == 2);
+
+        Debug.Log($"BlackjackLevels: Update visuals → level {currentLevel}. " +
+                  $"Low={lowStakesTable?.activeSelf}, Med={mediumStakesTable?.activeSelf}, High={highStakesTable?.activeSelf}");
+    }
 }
+
+
+
+
+
+
 
 
 

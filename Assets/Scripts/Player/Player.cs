@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public int handValue = 0;
 
     public int money = 1000;
-
+    
     public GameObject[] hand;
     public int cardIndex = 0;
     List<Card> aceList = new List<Card>();

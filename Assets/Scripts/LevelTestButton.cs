@@ -2,22 +2,25 @@ using UnityEngine;
 
 public class LevelTestButton : MonoBehaviour
 {
-    public BlackjackLevels levels;
+    [Tooltip("Net result of this hand for the player. Positive = win, Negative = loss.")]
+    public int moneyDelta = 100;          // set in Inspector: +100 or -200
 
-    public void Win100()
-    {
-        if (levels != null)
-        {
-            levels.OnHandFinished(100);
-        }
-    }
+    private BlackjackLevels blackjackLevels;
 
-    public void Lose50()
+    public void OnClick()
     {
-        if (levels != null)
+        if (blackjackLevels == null)
+            blackjackLevels = FindObjectOfType<BlackjackLevels>();
+
+        if (blackjackLevels == null)
         {
-            levels.OnHandFinished(-50);
+            Debug.LogWarning("LevelTestButton: No BlackjackLevels found in scene.");
+            return;
         }
+
+        blackjackLevels.ApplyHandResult(moneyDelta);
     }
 }
+
+
 
