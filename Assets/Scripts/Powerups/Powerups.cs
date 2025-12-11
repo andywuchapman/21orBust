@@ -40,35 +40,35 @@ public class Powerups : MonoBehaviour
         {
             case PowerupType.Double:
                 GameObject doublePowerup = Instantiate(DoublePowerupPrefab);
-                doublePowerup.transform.SetParent(PowerupsPanel.transform);
+                doublePowerup.transform.SetParent(PowerupsPanel.transform, false);
                 DoublePowerup doublePowerupScript = doublePowerup.GetComponent<DoublePowerup>();
                 powerups.Add(doublePowerupScript);
                 doublePowerupScript.RegisterPowerups(this);
                 break;
             case PowerupType.Remove:
                 GameObject removePowerup = Instantiate(RemovePowerupPrefab);
-                removePowerup.transform.SetParent(PowerupsPanel.transform);
+                removePowerup.transform.SetParent(PowerupsPanel.transform, false);
                 RemovePowerup removePowerupScript = removePowerup.GetComponent<RemovePowerup>();
                 powerups.Add(removePowerupScript);
                 removePowerupScript.RegisterPowerups(this);
                 break;
             case PowerupType.Skip:
                 GameObject skipPowerup = Instantiate(SkipPowerupPrefab);
-                skipPowerup.transform.SetParent(PowerupsPanel.transform);
+                skipPowerup.transform.SetParent(PowerupsPanel.transform, false);
                 SkipPowerup skipPowerupScript = skipPowerup.GetComponent<SkipPowerup>();
                 powerups.Add(skipPowerupScript);
                 skipPowerupScript.RegisterPowerups(this);
                 break;
             case PowerupType.Peer:
                 GameObject peerPowerup = Instantiate(PeerPowerupPrefab);
-                peerPowerup.transform.SetParent(PowerupsPanel.transform);
+                peerPowerup.transform.SetParent(PowerupsPanel.transform, false);
                 PeerPowerup peerPowerupScript = peerPowerup.GetComponent<PeerPowerup>();
                 powerups.Add(peerPowerupScript);
                 peerPowerupScript.RegisterPowerups(this);
                 break;
             case PowerupType.Randomizer:
                 GameObject randomizerPowerup = Instantiate(RandomizerPowerupPrefab);
-                randomizerPowerup.transform.SetParent(PowerupsPanel.transform);
+                randomizerPowerup.transform.SetParent(PowerupsPanel.transform, false);
                 RandomizerPowerup randomizerPowerupScript = randomizerPowerup.GetComponent<RandomizerPowerup>();
                 powerups.Add(randomizerPowerupScript);
                 randomizerPowerupScript.RegisterPowerups(this);
@@ -84,8 +84,8 @@ public class Powerups : MonoBehaviour
     private void RemovePowerup(Powerup powerup)
     {
         powerups.Remove(powerup);
-        
         // also add code to delete the powerup gameobject that's on screen
+        Destroy(powerup.gameObject);
     }
 
     public void OnPowerupClicked(Powerup powerup)
