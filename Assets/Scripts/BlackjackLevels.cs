@@ -13,8 +13,7 @@ public class BlackjackLevels : MonoBehaviour
     [Header("Level Rules")]
     public int profitToLevelUp = 20;    
     public int lossToLevelDown = 300;    
-
-    // 0 = low, 1 = medium, 2 = high
+    
     [SerializeField] private int currentLevel = 0;
 
     private int moneyAtLevelStart;

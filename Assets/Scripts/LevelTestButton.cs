@@ -3,7 +3,7 @@ using UnityEngine;
 public class LevelTestButton : MonoBehaviour
 {
     [Tooltip("Net result of this hand for the player. Positive = win, Negative = loss.")]
-    public int moneyDelta = 100;          // set in Inspector: +100 or -200
+    public int moneyDelta = 100;          
 
     private BlackjackLevels blackjackLevels;
 
