@@ -6,6 +6,7 @@ public class ShopManager : MonoBehaviour
     public ShopItem[] itemSlots;
     public GameObject shopCanvas;
     public GameObject blackjackCanvas;
+    public GameManager gameManager;
 
     private void Start()
     {
@@ -27,5 +28,6 @@ public class ShopManager : MonoBehaviour
     {
         shopCanvas.SetActive(false);
         blackjackCanvas.SetActive(true);
+        gameManager.UpdateCash();
     }
 }

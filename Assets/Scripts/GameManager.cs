@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
         // Initial bet for this round
         player.AdjustMoney(-20);
-        cashText.text = "$" + player.GetMoney();
+        UpdateCash();
 
        
         if (blackjackLevels != null)
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour
             mainText.gameObject.SetActive(true);
             dealerScoreText.gameObject.SetActive(true);
             hideCard.GetComponent<Renderer>().enabled = false;
-            cashText.text = "$" + player.GetMoney();
+            UpdateCash();
             standClicks = 0;
         }
     }
@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
         int intBet = int.Parse(newBet.text.Remove(0, 1));
 
         player.AdjustMoney(-intBet);
-        cashText.text = "$" + player.GetMoney();
+        UpdateCash();
         pot += (intBet * 2);
         betsText.text = "Bets: $" + pot;
         
@@ -196,6 +196,11 @@ public class GameManager : MonoBehaviour
         {
             blackjackLevels.ResetBaselineToCurrentMoney();
         }
+    }
+
+    public void UpdateCash()
+    {
+        cashText.text = "$" + player.GetMoney();
     }
 }
 

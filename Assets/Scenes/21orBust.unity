@@ -799,6 +799,7 @@ MonoBehaviour:
   - {fileID: 347447532}
   shopCanvas: {fileID: 1332533821}
   blackjackCanvas: {fileID: 177362635}
+  gameManager: {fileID: 193083579}
 --- !u!1 &194719372
 GameObject:
   m_ObjectHideFlags: 0
